@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cafe Homepage</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f7f7f7;
+    }
+    header {
+        background-color: #ffd5cd;
+        color: #333;
+        padding: 20px 0;
+        text-align: center;
+    }
+    nav {
+        background-color: #ffbeb2;
+        color: #333;
+        text-align: center;
+        padding: 10px 0;
+    }
+    nav a {
+        color: #333;
+        text-decoration: none;
+        padding: 0 10px;
+    }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .product {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+    }
+    .product img {
+        max-width: 100px;
+        float: left;
+        margin-right: 10px;
+    }
+    .product h3 {
+        margin-top: 0;
+    }
+    .product p {
+        margin-bottom: 0;
+    }
+    button {
+        background-color: #ff6961;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #ff423b;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome  to Cafe Fun </h1>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#products">Products</a>
+    <a href="#payment">Payment</a>
+    <a href="#about">About Us</a>
+    <a href="admin.html">Login</a>
+</nav>
+
+<div class="container">
+
+    <section id="products">
+        <h2>Our Products</h2>
+        <div class="product">
+            <img src="https://t4.ftcdn.net/jpg/03/15/91/95/360_F_315919556_b7J8OGH5IobzosWBmC5NOwMoP5eZLpxn.jpg" alt="Coffee">
+            <h3>Coffee</h3>
+            <p>Price: ₹100</p>
+            <button onclick="addToCart('Coffee', 150)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://media.istockphoto.com/id/1319558692/photo/black-tea.jpg?s=612x612&w=0&k=20&c=nUsQRpJRs6-kmi10gBY4m89gtyFy9H5GH2z9Et92kQM=" alt="Tea">
+            <h3>Tea</h3>
+            <p>Price: ₹50</p>
+            <button onclick="addToCart('Tea', 250)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://media.istockphoto.com/id/530987184/photo/vegetable-chips.jpg?s=612x612&w=0&k=20&c=GxAEXykxK8ImQ4E4LpVPoko6eY_K3eeCV0Fpx_A0FSA=" alt="Potato Chips">
+            
+            <h3>Potato Chips</h3>
+            <p>Price: ₹50</p>
+            <button onclick="addToCart('Potato Chips', 50)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://media.gettyimages.com/id/1306748932/photo/close-up-of-mango-and-juice-on-table.jpg?s=612x612&w=0&k=20&c=17aiGTpaVdIlI8CDqwieERX9WzfEV58g3wmbas8yEAk=" alt="Mango Juice">
+            <h3>Mango Juice</h3>
+            <p>Price: ₹100</p>
+            <button onclick="addToCart('Mango Juice', 100)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://t4.ftcdn.net/jpg/01/18/83/53/360_F_118835355_iITFWYX3aoEeRAXvy50zOBlkbw6zk5xJ.jpg" alt="Orange Juice">
+            <h3>Orange Juice</h3>
+            <p>Price: ₹80</p>
+            <button onclick="addToCart('Orange Juice', 80)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://media.istockphoto.com/id/1155264835/photo/strawberry-smoothie.jpg?s=612x612&w=0&k=20&c=kKD35LoFQ28kGe_5dxh7rNAtsd68fBJVVO4rEM_xxq8=" alt="Strawberry Juice">
+            <h3>Strawberry Juice</h3>
+            <p>Price: ₹150</p>
+            <button onclick="addToCart('Strawberry Juice', 150)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://t4.ftcdn.net/jpg/01/60/57/35/360_F_160573579_6ARC9IkXf4Kjh2OgRVxjwr6p5eu1poem.jpg" alt="Chicken Burger">
+            <h3>Chicken Burger</h3>
+            <p>Price: ₹180</p>
+            <button onclick="addToCart('Chicken Burger',180)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://t4.ftcdn.net/jpg/02/28/09/95/360_F_228099524_b5nBLxYMFElZmoEb6M176pSsdylYWEmy.jpg" alt="Zinger Burger">
+            <h3>Zinger Burger</h3>
+            <p>Price: ₹145</p>
+            <button onclick="addToCart('Zinger Burger',145)">Add to Cart</button>
+            
+        </div>
+    </section>
+
+    <section id="payment">
+        <h2>Payment</h2>
+        <div id="cart">
+            <h3>Your Cart</h3>
+            <ul id="cart-items">
+            </ul>
+            <p>Total: ₹
+                <span id="total-price">0.00</span>
+            </div>
+            <button onclick="checkout()">Checkout</button>
+        </section>
+    
+        <section id="about">
+            <h2>About Us</h2>
+            <p>Welcome to our cozy cafe! We are dedicated to providing you with delicious coffee, tea, and snacks in a warm and inviting atmosphere. Whether you're here to relax with a book or catch up with friends, we have something for everyone. Sit back, sip, and enjoy!</p>
+        </section>
+    
+    </div>
+    
+    <script>
+        let cartItems = [];
+        let totalPrice = 0;
+    
+        function addToCart(itemName, itemPrice) {
+            cartItems.push({ name: itemName, price: itemPrice });
+            totalPrice += itemPrice;
+            updateCart();
+        }
+    
+        function updateCart() {
+            const cartList = document.getElementById("cart-items");
+            const totalElement = document.getElementById("total-price");
+    
+            cartList.innerHTML = "";
+            cartItems.forEach(item => {
+                const listItem = document.createElement("li");
+                listItem.textContent = `${item.name} - ₹${item.price}`;
+                cartList.appendChild(listItem);
+            });
+    
+            totalElement.textContent = totalPrice.toFixed(2);
+        }
+    
+        function checkout() {
+            alert("Thank you for your purchase!");
+            cartItems = [];
+            totalPrice = 0;
+            updateCart();
+        }
+    </script>
+    
+    </body>
+    </html>

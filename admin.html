@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f7f7f7;
+    }
+    header {
+        background-color: #ffd5cd;
+        color: #333;
+        padding: 20px 0;
+        text-align: center;
+    }
+    nav {
+        background-color: #ffbeb2;
+        color: #333;
+        text-align: center;
+        padding: 10px 0;
+    }
+    nav a {
+        color: #333;
+        text-decoration: none;
+        padding: 0 10px;
+    }
+    .container {
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    input[type="text"],
+    input[type="password"],
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    button {
+        background-color: #ff6961;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #ff423b;
+    }
+    .item {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #fafafa;
+        border-radius: 5px;
+    }
+    .item span {
+        margin-right: 10px;
+    }
+    .remove-btn {
+        background-color: #aaa;
+    }
+    .remove-btn:hover {
+        background-color: #777;
+    }
+</style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome  to Cafe Fun </h1>
+    </header>
+    
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#products">Products</a>
+        <a href="#payment">Payment</a>
+        <a href="#about">About Us</a>
+        <a href="#">Login</a>
+    </nav>
+
+<div class="container">
+    <h2>Admin Login</h2>
+    <form id="login-form">
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<div class="container" id="admin-panel" style="display: none;">
+    <h2>Add New Item</h2>
+    <form id="add-item-form">
+        <input type="text" id="item-name" placeholder="Item Name">
+        <input type="number" id="item-price" placeholder="Item Price">
+        <button type="submit">Add Item</button>
+    </form>
+    <h2>Current Items</h2>
+    <div id="items-container"></div>
+</div>
+
+<script>
+    const adminPanel = document.getElementById("admin-panel");
+    const loginForm = document.getElementById("login-form");
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+    const addItemForm = document.getElementById("add-item-form");
+    const itemsContainer = document.getElementById("items-container");
+
+    const items = [];
+
+    function renderItems() {
+        itemsContainer.innerHTML = "";
+        items.forEach((item, index) => {
+            const itemDiv = document.createElement("div");
+            itemDiv.classList.add("item");
+            itemDiv.innerHTML = `
+                <span>${item.name} - ₹${item.price}</span>
+                <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+            `;
+            itemsContainer.appendChild(itemDiv);
+        });
+    }
+
+    function addItem(name, price) {
+        items.push({ name, price });
+        renderItems();
+    }
+
+    function removeItem(index) {
+        items.splice(index, 1);
+        renderItems();
+    }
+
+    loginForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const username = usernameInput.value;
+        const password = passwordInput.value;
+        // Perform authentication (you can replace this with your authentication logic)
+        if (username === "admin" && password === "admin") {
+            loginForm.reset();
+            adminPanel.style.display = "block";
+        } else {
+            alert("Invalid username or password!");
+        }
+    });
+
+    addItemForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const itemName = document.getElementById("item-name").value;
+        const itemPrice = parseInt(document.getElementById("item-price").value);
+        if (itemName && itemPrice) {
+            addItem(itemName, itemPrice);
+            document.getElementById("item-name").value = "";
+            document.getElementById("item-price").value = "";
+        } else {
+            alert("Please enter item name and price.");
+        }
+    });
+</script>
+
+</body>
+</html>
